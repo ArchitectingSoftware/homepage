@@ -1,0 +1,68 @@
+<!-- Services -->
+<section id="research" class="bg-light" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Publications</h2>
+          <h3 class="section-subheading text-muted"></h3>
+        </div>
+      </div>
+      <div class="row">
+          <h4>Ph.D. Thesis</h4>
+      </div>
+      <div class="row">
+          <span class="font-italic font-weight-bold">
+              A Heuristic Search Approach to Solving the Software Clustering Problem
+          </span>
+          <p>
+              The focus of this work was to investigate recovering interesting views of 
+              the structure of software systems using heuristic search techniques. This 
+              work has applicability in multiple software engineering areas including: 
+              program understanding, software maintenance, and architecture recovery. 
+              As one of the founding members of the field of Search-Based Software 
+              Engineering (SBSE), this work has been widely sited by researchers 
+              interested in investigating software clustering algorithms and techniques.
+          </p>
+      </div>
+      <div class="row">
+        <p></p>
+      </div>
+      <div class="row">
+        <h4>Journal and Research Publications</h4>
+      </div>
+      <div class="row" *ngFor="let pub of publicationsList; let idx = index">
+        <p>
+            <span>
+              <a href="{{pub.link}}">"{{pub.title}}"</a> by {{pub.cite}}
+                <a href="#" (click)="toggleVisibility($event,idx)" 
+                [attr.aria-expanded]="showAbstractArray[idx]" class="badge badge-primary">Abstract</a>
+                <!--
+                <button type="button" class="btn btn-primary btn-sm" (click)="showAbstract = !showAbstract"
+                        [attr.aria-expanded]="!showAbstract" aria-controls="collapseExample">
+                  Show Abstract
+                </button>
+                -->
+                <div id="collapseExample" [ngbCollapse]="!showAbstractArray[idx]">
+                  <div class="card">
+                    <div class="card-body">
+                      {{pub.abstract}}
+                    </div>
+                  </div>
+                </div>
+                <span *ngFor = "let extra of pub.slides">
+                  <span *ngIf="extra.type == 'PPT'"> 
+                    <a href="{{extra.link}}" class="badge badge-warning">
+                      slides/PPT <i class="fa fa-file-powerpoint-o"></i>
+                    </a>
+                  </span>
+                  <span *ngIf="extra.type == 'PDF'"> 
+                    <a href="{{extra.link}}" class="badge badge-warning">
+                        slides/PDF <i class="fa fa-file-pdf-o"></i>
+                    </a>
+                  </span>
+                </span>
+            </span>
+        </p>
+      </div>
+    </div>
+  </section>
